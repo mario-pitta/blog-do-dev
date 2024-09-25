@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pitta-blog-dio:build:production"
+              "buildTarget": "pitta-blog-dio:build:production"
             },
             "development": {
-              "browserTarget": "pitta-blog-dio:build:development"
+              "buildTarget": "pitta-blog-dio:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pitta-blog-dio:build"
+            "buildTarget": "pitta-blog-dio:build"
           }
         },
         "test": {
