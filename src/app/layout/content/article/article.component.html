@@ -1,0 +1,17 @@
+<section id="article">
+
+  <ng-container *ngIf="content$ | async as content">
+    <h1>{{content.title}}</h1>
+    <h5>{{content.author.name}}</h5>
+    <article>
+
+      <p [outerHTML]="content.content"></p>
+      @if(content.video){
+
+        asas
+        <p [outerHTML]="content.video"></p>
+      }
+    </article>
+
+  </ng-container>
+</section>

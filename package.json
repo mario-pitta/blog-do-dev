@@ -24,7 +24,11 @@
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.2.0",
+    "husky": "^9.1.6",
+    "jquery": "^3.7.1",
+    "ngx-summernote": "^1.0.0",
     "rxjs": "~7.5.0",
+    "summernote": "^0.8.20",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
   },

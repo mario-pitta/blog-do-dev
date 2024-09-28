@@ -1,0 +1,25 @@
+.wrapper {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 90vh;
+  // border: 1px solid red;
+  width: 100%;
+}
+
+
+
+.main {
+  // border: 1px solid green;
+  margin-top: 10px;
+  width: 50%;
+}
+
+
+@media screen and (max-width: 768px) {
+  .main {
+    // border: 1px solid green;
+    width: 100%;
+  }
+}
