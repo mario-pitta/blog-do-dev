@@ -1,17 +1,58 @@
 <section id="article">
 
   <ng-container *ngIf="content$ | async as content">
+    <sub>{{content.createdAt | date}}</sub>
     <h1>{{content.title}}</h1>
     <h5>{{content.author.name}}</h5>
     <article>
-
       <p [outerHTML]="content.content"></p>
-      @if(content.video){
-
-        asas
-        <p [outerHTML]="content.video"></p>
-      }
     </article>
+
+    <section id="like_battle" class="text-center">
+
+      <h1>Battle of Likes</h1>
+      <p class="d-flex justify-content-center  align-items-center gap-3 mb-5">
+        <button mat-fab color="secondary" [disabled]="content.likes === 0" (click)="unlikeArticle(content)">
+          <mat-icon>thumb_down</mat-icon>
+        </button>
+        {{content.likes || 0}}
+        <button mat-fab color="primary" (click)="likeArticle(content)">
+          <mat-icon>thumb_up</mat-icon>
+        </button>
+      </p>
+    </section>
+
+    <section id="comments" class="mt-2">
+
+      <h1>Comments</h1>
+
+
+      <form action="" [formGroup]="form">
+        <div class="form-group mb-2 ">
+          <quill-editor formControlName="content"></quill-editor>
+        </div>
+        <div class="form-group mb-2 ">
+          <button mat-raised-button class="btn btn-light" fill="outlined"
+            (click)="onComment(content, form.value.content)" color="primary">Comment</button>
+        </div>
+      </form>
+
+      @if(content.comments){
+      @for(comment of content.comments; track comment){
+      <div class="card w-100 d-flex mt-3 ps-3 pe-3 pt-3">
+
+        <div class=" p-2">
+          <sub>{{comment.createdAt | date}}</sub>
+          <p>
+
+            <label class="form-label text-black text-secondary-emphasis">{{comment.author?.name}}</label>
+          </p>
+          <p [outerHTML]="comment.content"></p>
+        </div>
+      </div>
+      }
+      }
+    </section>
 
   </ng-container>
 </section>

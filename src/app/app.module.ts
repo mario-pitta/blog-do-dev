@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LayoutComponent } from "./layout/layout.component";
 import { HttpClientModule } from '@angular/common/http';
+// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     NgbModule,
     LayoutComponent,
-    HttpClientModule
+    HttpClientModule,
+    // CKEditorModule
 
 ],
   providers: [

@@ -1,7 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
+
+/* Importing Quill SCSS file. */
+@import "~quill/dist/quill.bubble.css";
+// or
+@import "~quill/dist/quill.snow.css";
+
+@import "node_modules/bootstrap/scss/variables";
+:root {
+  --primary: var(--mdc-circular-progress-active-indicator-color);
+}
+
+.form-label {
+  color: var(--primary) !important;
+  font-weight: bold !important;
+}
+
+body {
+  background: hsla(270, 4%, 10%, 1);
+
+  background: linear-gradient(143deg, hsla(270, 4%, 10%, 1) 2%, hsla(272, 64%, 20%, 1) 100%);
+
+  background: -moz-linear-gradient(143deg, hsla(270, 4%, 10%, 1) 2%, hsla(272, 64%, 20%, 1) 100%);
+
+  background: -webkit-linear-gradient(143deg, hsla(270, 4%, 10%, 1) 2%, hsla(272, 64%, 20%, 1) 100%);
+  overflow: hidden;
+
+}
+
+.mat-mdc-raised-button[disabled], .mat-mdc-raised-button.mat-mdc-button-disabled {
+  cursor: default;
+  pointer-events: none;
+   color: var(--mdc-protected-button-disabled-label-text-color);
+   background-color: var(--primary) !important;
+   opacity: 0.4;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}

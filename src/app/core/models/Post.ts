@@ -5,19 +5,21 @@ export interface Post {
   title: string;
   author: Author;
   content: string;
+  createdAt: Date;
+  likes: number;
+  comments: any[];
 }
 
 export class Post implements Post {
-  constructor(obj: {
-    id: string | number;
-    title: string;
-    author: Author;
-    content: string;
-  }) {
+  constructor(obj: Post) {
     this.author = obj.author;
     this.content = obj.content;
     this.title = obj.title;
     this.id = obj.id;
+    this.createdAt = obj.createdAt;
+    this.likes = obj.likes;
+    this.comments = obj.comments;
+
   }
 
   get getAuthor() {

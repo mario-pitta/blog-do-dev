@@ -1,18 +1,19 @@
-<p>feed works!</p>
-
-
-
+@if(loading){
+<div class="w-100 h-100 d-flex align-items-center justify-content-center">
+  <mat-spinner mode="indeterminate" color="success"></mat-spinner>
+</div>
+}
 <ng-container *ngFor="let post of posts$ | async">
-
-  <mat-card  class="bg-light text-black">
+  <mat-card class="bg-light text-black mb-4">
     <mat-card-header>
-      <mat-card-subtitle class=" text-black-50">{{post.author.name}}</mat-card-subtitle>
+      <mat-card-subtitle  class=" text-black-50">{{post.createdAt | date}}</mat-card-subtitle>
       <mat-card-title>{{post.title}}</mat-card-title>
+      <mat-card-subtitle class=" text-black-50">{{post.author.name}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions align="end" class=" text-black">
-      <button mat-button [color]="'primary'" [routerLink]="['/article', post.id, post.title]" routerLinkActive="router-link-active" >Learn More</button>
+      <button mat-button [color]="'primary'" [routerLink]="['/article', post.id, post.title]"
+        routerLinkActive="router-link-active">Learn More</button>
     </mat-card-actions>
   </mat-card>
-
 
 </ng-container>

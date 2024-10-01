@@ -9,3 +9,20 @@ a {
   text-decoration: none;
   color: white;
 }
+
+
+a:hover {
+  color: var(--primary);
+  animation: changeColor 0.25s forwards linear;
+}
+
+
+@keyframes changeColor {
+  0% {
+    color: white;
+  }
+  100% {
+    color: var(--primary);
+  }
+
+}
