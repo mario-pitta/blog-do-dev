@@ -1,27 +1,46 @@
-# PittaBlogDio
+# BlogDoPitta
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
+This project is part of a Digital Innovation One project challenge on my Advanced Angular Developer certification path.
+The purpose of this challenge was to make me able to build my own personal blog with Angular and show me some tricks about Angular development, like handling http requests with rxjs observables and template pipes.
 
-## Development server
+The database was built with JSON Server and serves only to make the application manipulate data from a fake API to simulate the use of the full power of the framework as in a real-world application.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#### Development Report
 
-## Code scaffolding
+I'm a experient Angular Developer so i apllyed some funcionalities that don't was showed at the course, like changeDetectionStrategies, ReactiveForms and LazyLoading routing
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Main Dependencies :book:
 
-## Build
+- Angular v18;
+- Angular Material ^15
+- Node ^20
+- json server;
+- npm-run-all;
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To install all project dependencies, run
+`npm install --legacy-peer-deps`
 
-## Running unit tests
+_ps: some dependencies show incompatibilities with the angular compiler, but they work normally, so you can install and run them and see the magic happen._
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### How to run :question:
 
-## Running end-to-end tests
+Before running this project, you need to install the client and server dependencies. To do this, you need to run the following command:
+`npm run install: all`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Once all dependencies have been installed, the project can be started correctly with the command: 
 
-## Further help
+`npm start running`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+and voi lá !
+
+![Feed Image](src/assets/docs/imgs/image.png);
+
+
+#### Have fun :smile:
+Feel free to use the source code to help with your own projects and challenges. I will also be grateful for feedback and suggestions for improvements.
+![Article Image](src/assets/docs/imgs/image-1.png);
+
+
+#### Star This Project :star:
+Thank you!! :heart:
+
