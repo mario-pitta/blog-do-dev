@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { QuillModule } from 'ngx-quill';
+import { QuillEditorBase, QuillModule } from 'ngx-quill';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,6 +17,14 @@ import { Post } from 'src/app/core/models/Post';
 import { PostService } from 'src/app/core/services/post/post.service';
 import { AuthorService } from 'src/app/core/services/author/author.service';
 import { ActivatedRoute } from '@angular/router';
+
+
+import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from 'ngx-quill'
+import Quill from 'quill'
+import Block from 'quill/blots/block';
+
+Block.tagName = "DIV";
+Quill.register(Block, true);
 
 @Component({
   selector: 'app-post',
@@ -42,7 +50,6 @@ export class PostComponent {
   form!: FormGroup;
   loading: boolean = true;
 
-
   ngOnInit(): void {
     let postId;
     if (!isNaN(this.aRoute.snapshot.params['id'])) {
@@ -52,7 +59,7 @@ export class PostComponent {
     }
     this.createForm();
 
-    if(postId) {
+    if (postId) {
       this.postService.getPost(postId).subscribe({
         next: (res) => {
           this.createForm(res[0]);
@@ -76,14 +83,25 @@ export class PostComponent {
         Validators.nullValidator,
       ]),
       content: new FormControl(post?.content || '', [Validators.required]),
-      author: new FormControl(post?.author?.name || '', [Validators.nullValidator]),
-      createdAt: new FormControl(post?.createdAt || '', [Validators.nullValidator]),
+      author: new FormControl(post?.author?.name || '', [
+        Validators.nullValidator,
+      ]),
+      createdAt: new FormControl(post?.createdAt || '', [
+        Validators.nullValidator,
+      ]),
     });
     console.log('this.form: ', this.form);
 
     this.loading = false;
   }
 
+  quillEditor!: QuillEditorBase;
+  created($event: any) {
+    this.quillEditor = $event;
+    console.log('this.quillEditor: ', this.quillEditor);
+
+    // this.quillEditor.theme.modules.toolbar
+  }
   onClick() {
     let post: Post = {
       ...this.form.value,
@@ -93,7 +111,9 @@ export class PostComponent {
       },
       createdAt: new Date(),
     };
-    const req = post.id ? this.postService.updatePost(post) : this.postService.createPost(post);
+    const req = post.id
+      ? this.postService.updatePost(post)
+      : (delete post.id, this.postService.createPost(post));
 
     req.subscribe({
       next: (res) => console.log(res),

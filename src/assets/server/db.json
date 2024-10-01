@@ -129,7 +129,9 @@
         "id": 1,
         "name": "Maria Silva"
       },
-      "createdAt": "2024-10-01T03:53:12.140Z"
+      "createdAt": "2024-10-01T03:53:12.140Z",
+      "comments": [],
+      "likes": 8
     },
     {
       "id": "55f7",
@@ -152,6 +154,20 @@
         }
       ],
       "likes": 42
+    },
+    {
+      "id": "1s5ad",
+      "title": "Como rodar vários scripts de npm com um comando",
+      "subtitle": "Bora aprender mais sobre npm e scripts!",
+      "content": "<div class=\"ql-align-justify\">Fala programador, beleza? </div><div class=\"ql-align-justify\">Bora aprender mais sobre npm e scripts!</div><div class=\"ql-align-justify\">Temos duas maneiras de executar diversos scripts com npm em apenas um comando</div><div class=\"ql-align-justify\">Em todas elas vamos precisar a configuração de scripts no package.json, ou seja, criaremos um script para rodar múltiplos comandos</div><div class=\"ql-align-justify\">A primeira forma vai funcionar em SOs baseados em Unix, ou seja, Linux e afins</div><div class=\"ql-align-justify\">O comando completo é:</div><pre data-language=\"plain\">\"nomedoscript\": \"npm run start &amp; npm run serve\"\n</pre><div class=\"ql-align-justify\">Note que você precisa colocar o nome que deseja para o script, e separar os comandos por &amp; (e comercial)</div><div class=\"ql-align-justify\"></div><div class=\"ql-align-justify\">Aqui utilizamos o start e o serve, você deve substituir para os scripts de sua escolha</div><div class=\"ql-align-justify\"></div><div class=\"ql-align-justify\">Se esta solução não funcionar, tente a seguinte abordagem:</div><div class=\"ql-align-justify\">Você pode instalar como  dependencia do seu projeto ou globalmente o pacote </div><pre data-language=\"plain\">npm-run-all\n</pre><div class=\"ql-align-justify\"></div><div class=\"ql-align-justify\">e depois configurar um npm script no seu arquivo package.json para ajudar na hora de executar o comando.</div><pre data-language=\"plain\">\"nomedoscript\": \"npm-run-all --parallel start serve\"\n</pre><div class=\"ql-align-justify\"></div><div class=\"ql-align-justify\">Agora o comando é mais padronizado, apenas precisamos escolher o nome do script</div><div class=\"ql-align-justify\">E depois o nome dos comandos que devem rodar, após a utilização de&nbsp;<strong>npm-run-all</strong></div><div class=\"ql-align-justify\">Note também que esta solução vai funcionar em todos os ambientes, inclusive em Windows</div><div class=\"ql-align-justify\">Caso a primeira alternativa tenha falhado de alguma maneira</div><div class=\"ql-align-justify\"></div><h2 class=\"ql-align-justify\">Conclusão</h2><div class=\"ql-align-justify\">Neste artigo você aprendeu a rodar vários scripts de npm em um único script</div><div class=\"ql-align-justify\">Criamos nosso script em package.json, como os outros individuais</div><div class=\"ql-align-justify\">Porém utilizamos abordagens diferentes para concatenar outros comandos</div><div class=\"ql-align-justify\">Resultando em uma execução paralela de vários scripts npm, a quantidade é indefinida, você que escolhe</div><div></div>",
+      "author": {
+        "id": 1,
+        "name": "Pedro Santos"
+      },
+      "createdAt": "2024-10-01T04:24:09.277Z",
+      "comments": [
+      ],
+      "likes": 0
     }
   ],
   "authors": [
