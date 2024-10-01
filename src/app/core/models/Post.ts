@@ -3,6 +3,7 @@ import { Author } from './Author';
 export interface Post {
   id?: string | number;
   title: string;
+  subtitle: string;
   author: Author;
   content: string;
   createdAt: Date;
@@ -15,6 +16,7 @@ export class Post implements Post {
     this.author = obj.author;
     this.content = obj.content;
     this.title = obj.title;
+    this.subtitle = obj.subtitle;
     this.id = obj.id;
     this.createdAt = obj.createdAt;
     this.likes = obj.likes;

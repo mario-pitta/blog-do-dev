@@ -4,7 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { provideQuillConfig, QuillModule } from 'ngx-quill';
 import { map, Observable } from 'rxjs';
 import { Post } from 'src/app/core/models/Post';
@@ -21,6 +21,7 @@ import { PostService } from 'src/app/core/services/post/post.service';
     MatIcon,
     ReactiveFormsModule,
     QuillModule,
+    RouterLink
   ],
   providers: [],
   templateUrl: './article.component.html',

@@ -1,4 +1,5 @@
-<form action="" [formGroup]="form">
+
+<form *ngIf="form" [formGroup]="form">
   <div class="form-group mb-2 ">
 
     <label for="title" class="form-label">Title</label>
@@ -12,12 +13,13 @@
 
   <div class="form-group mb-2 ">
     <div class="mt-3">
-      <h3>Expose your feelings: </h3>
-      <quill-editor formControlName="content"></quill-editor>
-
+      <label for="content" class="form-label">Expose your feelings: </label>
+      <quill-editor id="content" formControlName="content"  ></quill-editor>
+      <div id="editor"></div>
       <div class="d-flex justify-content-end w-100">
 
-        <button mat-raised-button class="btn btn-light" fill="outlined" (click)="onClick()" color="primary" [disabled]="!form.valid">Save
+        <button mat-raised-button class="btn btn-light" fill="outlined" (click)="onClick()" color="primary"
+          [disabled]="!form.valid">Save
           Post</button>
       </div>
     </div>

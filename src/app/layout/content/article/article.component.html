@@ -1,8 +1,12 @@
-<section id="article">
+<section id="article" class="">
 
   <ng-container *ngIf="content$ | async as content">
+
     <sub>{{content.createdAt | date}}</sub>
-    <h1>{{content.title}}</h1>
+    <h1>{{content.title}}  <button mat-icon-button color="primary" [routerLink]="['/edit-post', content.id, content.title]">
+      <mat-icon class="mat-18">edit</mat-icon>
+    </button></h1>
+    <h3>{{content.subtitle}}</h3>
     <h5>{{content.author.name}}</h5>
     <article>
       <p [outerHTML]="content.content"></p>

@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Post } from 'src/app/core/models/Post';
 import { PostService } from 'src/app/core/services/post/post.service';
 import { AuthorService } from 'src/app/core/services/author/author.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -32,38 +33,72 @@ import { AuthorService } from 'src/app/core/services/author/author.service';
   ],
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class PostComponent {
+  postService = inject(PostService);
+  aRoute = inject(ActivatedRoute);
+
+  form!: FormGroup;
+  loading: boolean = true;
+
+
+  ngOnInit(): void {
+    let postId;
+    if (!isNaN(this.aRoute.snapshot.params['id'])) {
+      postId = Number(this.aRoute.snapshot.params['id']);
+    } else {
+      postId = this.aRoute.snapshot.params['id'];
+    }
+    this.createForm();
+
+    if(postId) {
+      this.postService.getPost(postId).subscribe({
+        next: (res) => {
+          this.createForm(res[0]);
+        },
+        error: (err) => console.log(err),
+        complete: () => console.log('complete'),
+      });
+    }
+  }
+  authorService = inject(AuthorService);
+  gerarNomeAleatorio() {
+    return this.authorService.createRandomAuthor();
+  }
+
+  createForm(post?: Post) {
+    console.log(post);
+    this.form = new FormGroup({
+      id: new FormControl(post?.id || '', [Validators.nullValidator]),
+      title: new FormControl(post?.title || '', [Validators.required]),
+      subtitle: new FormControl(post?.subtitle || '', [
+        Validators.nullValidator,
+      ]),
+      content: new FormControl(post?.content || '', [Validators.required]),
+      author: new FormControl(post?.author?.name || '', [Validators.nullValidator]),
+      createdAt: new FormControl(post?.createdAt || '', [Validators.nullValidator]),
+    });
+    console.log('this.form: ', this.form);
+
+    this.loading = false;
+  }
+
   onClick() {
     let post: Post = {
       ...this.form.value,
       author: {
         id: 1,
-        name: this.gerarNomeAleatorio()
+        name: this.gerarNomeAleatorio(),
       },
       createdAt: new Date(),
     };
+    const req = post.id ? this.postService.updatePost(post) : this.postService.createPost(post);
 
-    this.postService.createPost(post).subscribe({
+    req.subscribe({
       next: (res) => console.log(res),
       error: (err) => console.log(err),
       complete: () => console.log('complete'),
     });
-  }
-
-  postService = inject(PostService);
-
-  form!: FormGroup;
-  ngOnInit(): void {
-    this.form = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      subtitle: new FormControl('', [Validators.nullValidator]),
-      content: new FormControl('', [Validators.required]),
-    });
-  }
-authorService = inject(AuthorService)
-  gerarNomeAleatorio() {
-    return this.authorService.createRandomAuthor()
   }
 }
