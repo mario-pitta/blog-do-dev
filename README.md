@@ -7,7 +7,7 @@ The database was built with JSON Server and serves only to make the application 
 
 #### Development Report
 
-I'm a experient Angular Developer so i apllyed some funcionalities that don't was showed at the course, like changeDetectionStrategies, ReactiveForms and LazyLoading routing
+I'm a experient Angular Developer so i apllyed some funcionalities that don't was showed at the course, like changeDetectionStrategies, ReactiveForms and LazyLoading routing. I optited to use routing instead modal form strategy
 
 #### Main Dependencies :book:
 
