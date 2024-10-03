@@ -1,0 +1,62 @@
+.footer {
+  height: max-content;
+  .logo {
+    width: 100px;
+  }
+
+  .network-logo {
+    :nth-child(0) {
+      width: 50px;
+    }
+
+    :nth-child(1) {
+      width: 65px;
+      margin-top: -3px;
+      margin-right: -13px;
+    }
+
+    :nth-child(2) {
+      width: 90px;
+      margin: -16px;
+    }
+  }
+}
+
+span {
+  color: white;
+  font-size: small;
+}
+
+
+.network-logo {
+  position: relative;
+  transition: all 0.5s ease-in-out ;
+  scale: 1;
+  filter: grayscale(1);
+}
+.instagram-logo {
+  width: 50px;
+}
+.linkedin-logo {
+  width: 65px;
+  margin-top: -3px;
+  margin-right: -13px;
+}
+.whatsapp-logo {
+  width: 90px;
+  margin: -16px;
+}
+.github-logo {
+  width: 68px;
+  margin: -16px;
+  margin-top: -9px;
+  filter: contrast(0);
+}
+
+.network-logo:hover {
+  // filter: grayscale(0);
+  filter: drop-shadow(0px 0px 3px black);
+
+  scale: 1.2;
+}
+

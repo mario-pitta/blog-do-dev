@@ -1,10 +1,10 @@
-import { Author } from './Author';
+import { Usuario } from './Usuario';
 
 export interface Post {
   id?: string | number;
   title: string;
   subtitle: string;
-  author: Author;
+  author: Usuario;
   content: string;
   createdAt: Date;
   likes: number;

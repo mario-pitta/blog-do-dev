@@ -22,9 +22,12 @@
               </div>
               <div class="mb-3">
                 <label for="github" class="form-label">Github Profile</label>
-                <input type="text" class="form-control" formControlName="github" name="github"
-                  [ngClass]="{'border-danger invalid': form.controls['github'].invalid && form.controls['github'].touched}"
-                  id="github">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon3">https://github.com/</span>
+                  <input type="text" class="form-control" formControlName="github" name="github"
+                    [ngClass]="{'border-danger invalid': form.controls['github'].invalid && form.controls['github'].touched}"
+                    id="github">
+                </div>
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>

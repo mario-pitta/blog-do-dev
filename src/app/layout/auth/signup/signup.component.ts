@@ -29,7 +29,7 @@ import { AuthorService } from 'src/app/core/services/author/author.service';
 export class SignupComponent {
   authorService = inject(AuthorService);
   router = inject(Router);
-  constructor() {}
+  loading: boolean = false;
   user: Usuario = new Usuario();
   form: FormGroup = new FormGroup({
     id: new FormControl(''),
@@ -40,22 +40,27 @@ export class SignupComponent {
     password: new FormControl('', [Validators.required]),
   });
 
+  constructor() {}
+
   onSubmit() {
+    this.loading = true;
     this.user = new Usuario(this.form.value);
+    delete this.user.id;
     this.authorService.createAuthor(this.user).subscribe({
       next: (res) => {
-        this.authorService
-          .login(this.user.email as string, this.user.password as string)
-          .subscribe({
-            next: (_res) => {
-              if (_res.length > 0) {
-                console.log('_res: ', _res);
-
-                localStorage.setItem('user', JSON.stringify(_res[0]));
-                this.router.navigate(['/']);
-              }
-            },
-          });
+        localStorage.setItem('user', JSON.stringify(res));
+        setTimeout(() => {
+          this.router.navigate(['/']);
+          location.href = '/';
+        }, 250);
+      },
+      error: (err) => {
+        console.log(err);
+        alert('Something went wrong, please check the console to more details');
+      },
+      complete: () => {
+        console.log('complete');
+        this.loading = false;
       },
     });
   }

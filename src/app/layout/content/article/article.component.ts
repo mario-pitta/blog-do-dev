@@ -1,6 +1,6 @@
 import { CommonModule, JsonPipe } from '@angular/common';
 import { Component, inject, SecurityContext } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -21,7 +21,7 @@ import { PostService } from 'src/app/core/services/post/post.service';
     MatIcon,
     ReactiveFormsModule,
     QuillModule,
-    RouterLink
+    RouterLink,
   ],
   providers: [],
   templateUrl: './article.component.html',
@@ -30,7 +30,8 @@ import { PostService } from 'src/app/core/services/post/post.service';
 export class ArticleComponent {
   content$!: Observable<Post | any>;
   form!: FormGroup;
-
+  authorService = inject(AuthorService);
+  user = this.authorService.getLoggedUser();
   constructor(
     private postService: PostService,
     private aRoute: ActivatedRoute,
@@ -52,7 +53,7 @@ export class ArticleComponent {
     }
 
     this.form = new FormGroup({
-      content: new FormControl(''),
+      content: new FormControl('', [Validators.required]),
     });
 
     this.content$ = this.postService.getPost(postId).pipe(
@@ -60,7 +61,7 @@ export class ArticleComponent {
         let _post = post[0];
 
         const div = document.createElement('div');
-        div.innerHTML = _post.content;
+        div.innerHTML = _post?.content;
         const imgs = div.getElementsByTagName('img');
 
         for (let i = 0; i < imgs.length; i++) {
@@ -69,25 +70,23 @@ export class ArticleComponent {
           img.classList.add('img-fluid');
         }
 
-        _post.comments = _post.comments?.map(comment => {
-          const _div = document.createElement('div');
-          _div.innerHTML = comment.content;
-          const imgs = _div.getElementsByTagName('img');
+        _post.comments =
+          _post?.comments?.map((comment) => {
+            const _div = document.createElement('div');
+            _div.innerHTML = comment.content;
+            const imgs = _div.getElementsByTagName('img');
 
-          for (let i = 0; i < imgs.length; i++) {
-            const img = imgs[i];
-            img.setAttribute('loading', 'lazy');
-            img.classList.add('img-fluid');
-          }
+            for (let i = 0; i < imgs.length; i++) {
+              const img = imgs[i];
+              img.setAttribute('loading', 'lazy');
+              img.classList.add('img-fluid');
+            }
 
-
-
-          return {
-            ...comment,
-            content: _div.innerHTML
-          }
-        }) || [];
-
+            return {
+              ...comment,
+              content: _div.innerHTML,
+            };
+          }) || [];
 
         return {
           ..._post,
@@ -97,7 +96,6 @@ export class ArticleComponent {
       })
     );
   }
-
 
   sanitize(url: string) {
     const safeUrl = this.sanitizer.sanitize(
@@ -128,22 +126,16 @@ export class ArticleComponent {
 
   onComment(post: Post, comment: string) {
     post.comments.push({
-      author: {
-        id: 1,
-        name: this.gerarNomeAleatorio()
-      },
+      author: this.user,
       createdAt: new Date(),
       content: comment,
     });
 
-    this.postService
-      .updatePost(post)
-      .subscribe((post) => location.reload());
+    this.postService.updatePost(post).subscribe((post) => location.reload());
   }
 
-  authorService = inject(AuthorService)
   gerarNomeAleatorio() {
-    return this.authorService.createRandomAuthor()
+    return this.authorService.createRandomAuthor();
   }
 
   ngOnDestroy(): void {}
