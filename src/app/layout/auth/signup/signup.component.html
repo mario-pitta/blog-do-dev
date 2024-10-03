@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center align-items-center h-100 overflow-hidden">
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="card bg-light border-1 shadow-lg">
+      <div class="card-header  bg-transparent border-0">
+        Sign Up
+      </div>
+      <div class="card-body mt-0">
+        <div class="row">
+          <div class="col-auto">
+            <form [formGroup]="form">
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" formControlName="name"
+                  [ngClass]="{'border-danger invalid': form.controls['name'].invalid && form.controls['name'].touched}"
+                  id="name">
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" formControlName="phone"
+                  [ngClass]="{'border-danger invalid': form.controls['phone'].invalid && form.controls['phone'].touched}"
+                  id="phone">
+              </div>
+              <div class="mb-3">
+                <label for="github" class="form-label">Github Profile</label>
+                <input type="text" class="form-control" formControlName="github" name="github"
+                  [ngClass]="{'border-danger invalid': form.controls['github'].invalid && form.controls['github'].touched}"
+                  id="github">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email"
+                  [ngClass]="{'border-danger invalid': form.controls['email'].invalid && form.controls['email'].touched}"
+                  id="email" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" formControlName="password"
+                  [ngClass]="{'border-danger invalid': form.controls['password'].invalid && form.controls['password'].touched}"
+                  id="password">
+              </div>
+            </form>
+            <div class="gap-2 d-flex justify-content-end mb-2">
+              <mat-card-actions align="end" class=" text-black">
+                <button mat-button [color]="'primary'" routerLinkActive="router-link-active"
+                  (click)="onSubmit()">Register</button>
+              </mat-card-actions>
+            </div>
+            <div class="text-center">
+              <a [routerLink]="['/login']">Already have an account?</a>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
