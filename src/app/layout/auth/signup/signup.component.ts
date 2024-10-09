@@ -9,7 +9,7 @@ import {
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatCardActions } from '@angular/material/card';
 import { Router, RouterLink } from '@angular/router';
-import { Usuario } from 'src/app/core/models/Usuario';
+import { User, IUser } from 'src/app/core/models/Usuario';
 import { AuthorService } from 'src/app/core/services/author/author.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class SignupComponent {
   authorService = inject(AuthorService);
   router = inject(Router);
   loading: boolean = false;
-  user: Usuario = new Usuario();
+  user: User = new User();
   form: FormGroup = new FormGroup({
     id: new FormControl(''),
     name: new FormControl('', [Validators.required]),
@@ -44,7 +44,7 @@ export class SignupComponent {
 
   onSubmit() {
     this.loading = true;
-    this.user = new Usuario(this.form.value);
+    this.user = new User(this.form.value);
     delete this.user.id;
     this.authorService.createAuthor(this.user).subscribe({
       next: (res) => {

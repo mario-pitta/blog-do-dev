@@ -1,10 +1,21 @@
-export class Usuario {
+export interface IUser {
   id?: string | number;
   name?: string;
   email?: string;
   phone?: string;
   github?: string;
   password?: string;
+}
+
+
+export class User implements IUser {
+  id?: string | number;
+  name?: string;
+  email?: string;
+  phone?: string;
+  github?: string;
+  password?: string;
+
   constructor(obj?: {
     id?: string
     name?: string

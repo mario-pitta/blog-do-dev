@@ -7,7 +7,19 @@ The database was built with JSON Server and serves only to make the application 
 
 #### Development Report
 
-I'm a experient Angular Developer so i apllyed some funcionalities that don't was showed at the course, like changeDetectionStrategies, ReactiveForms and LazyLoading routing. I optited to use routing instead modal form strategy
+I'm a experient Angular Developer, so i applied some functionalities that don't was showed at the course, like changeDetectionStrategies, ReactiveForms and LazyLoading routing. I opted to use routing instead modal form strategy
+
+#### Requisites
+- [x] List posts
+- [x] View Post Page
+- [x] Pubish posts
+- [x] Updating Posts
+- [x] Publish Comments in a Post
+- [x] Like and unlike posts
+- [x] Authentication
+
+[Read the docs](./Docs.md)
+
 
 #### Main Dependencies :book:
 
@@ -25,20 +37,20 @@ _ps: some dependencies show incompatibilities with the angular compiler, but the
 #### How to run :question:
 
 Before running this project, you need to install the client and server dependencies. To do this, you need to run the following command:
-`npm run install: all`
+`npm run install:all`
 
 Once all dependencies have been installed, the project can be started correctly with the command: 
 
-`npm start running`
+`npm run start:all`
 
 and voi lá !
 
-![Feed Image](src/assets/docs/imgs/image.png);
+![Feed Image](./docs/images/image.png);
 
 
 #### Have fun :smile:
 Feel free to use the source code to help with your own projects and challenges. I will also be grateful for feedback and suggestions for improvements.
-![Article Image](src/assets/docs/imgs/image-1.png);
+![Article Image](./docs/images/image-1.png);
 
 
 #### Star This Project :star:

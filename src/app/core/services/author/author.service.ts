@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Usuario } from '../../models/Usuario';
+import { IUser } from '../../models/Usuario';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 
@@ -8,17 +8,17 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthorService {
-  /** The line `loggedUser: BehaviorSubject<Usuario> = new BehaviorSubject<Usuario>({});` in the
+  /** The line `loggedUser: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});` in the
 `AuthorService` class is initializing a `BehaviorSubject` named `loggedUser` with an initial value
-of an empty object `{}` of type `Usuario`. */
-  loggedUser: BehaviorSubject<Usuario> = new BehaviorSubject<Usuario>({});
+of an empty object `{}` of type `IUser`. */
+  loggedUser: BehaviorSubject<IUser> = new BehaviorSubject<IUser>({});
 
   /**
    * The function `getLoggedUser` returns the value of the logged-in user.
    * @returns The `getLoggedUser()` function is returning the value of the `loggedUser` property, which
-   * is of type `Usuario`.
+   * is of type `IUser`.
    */
-  getLoggedUser(): Usuario {
+  getLoggedUser(): IUser {
     return this.loggedUser.value;
   }
 
@@ -34,7 +34,7 @@ of an empty object `{}` of type `Usuario`. */
    * the API specified in the `environment.apiUrl` variable.
    */
   getAuthors() {
-    return this.http.get<Usuario[]>(environment.apiUrl + '/authors');
+    return this.http.get<IUser[]>(environment.apiUrl + '/authors');
   }
 
   /**
@@ -51,14 +51,14 @@ of an empty object `{}` of type `Usuario`. */
   /**
    * The function `createAuthor` sends a POST request to the API endpoint `/authors` with the provided
    * author data.
-   * @param {Usuario} author - The `createAuthor` function takes an `author` object of type `Usuario` as
+   * @param {IUser} author - The `createAuthor` function takes an `author` object of type `IUser` as
    * a parameter. This `author` object likely contains information about the author such as their name,
    * biography, or other relevant details. The function then sends a POST request to the specified API
    * endpoint to create a new
    * @returns The `createAuthor` function is returning an HTTP POST request to the specified API endpoint
    * `/authors` with the `author` object as the payload.
    */
-  createAuthor(author: Usuario) {
+  createAuthor(author: IUser) {
     return this.http.post(environment.apiUrl + '/authors', author);
   }
 
@@ -85,10 +85,10 @@ of an empty object `{}` of type `Usuario`. */
    * represents the password input provided by the user during the login process.
    * @returns An HTTP GET request is being made to the specified API endpoint '/authors' with query
    * parameters 'name' set to the email and 'password' set to the password. The response is expected to
-   * be an array of Usuario objects.
+   * be an array of IUser objects.
    */
   login(email: string, password: string) {
-    return this.http.get<Usuario[]>(
+    return this.http.get<IUser[]>(
       environment.apiUrl + '/authors?name=' + email + '&password=' + password
     );
   }

@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatCardActions } from '@angular/material/card';
 import { Router, RouterLink } from '@angular/router';
-import { Usuario } from 'src/app/core/models/Usuario';
+import { User } from 'src/app/core/models/Usuario';
 import {
   FormControl,
   FormGroup,
@@ -39,7 +39,7 @@ export class LoginComponent {
   login() {
     this.loading = true;
     this.authorService.getAuthors().subscribe({
-      next: (res: Usuario[]) => {
+      next: (res: User[]) => {
         const user = res.find(
           (user) =>
             user.email === this.form.value.email &&

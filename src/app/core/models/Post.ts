@@ -1,14 +1,14 @@
-import { Usuario } from './Usuario';
+import { User } from './Usuario';
 
 export interface Post {
   id?: string | number;
   title: string;
   subtitle: string;
-  author: Usuario;
+  author: User;
   content: string;
   createdAt: Date;
   likes: number;
-  comments: any[];
+  comments: Comment[];
 }
 
 export class Post implements Post {
@@ -21,15 +21,19 @@ export class Post implements Post {
     this.createdAt = obj.createdAt;
     this.likes = obj.likes;
     this.comments = obj.comments;
-
   }
+}
 
-  get getAuthor() {
-    return this.author;
-  }
+export interface Comment {
+  author: User;
+  createdAt: Date;
+  content: string;
+}
 
-
-  get getId() {
-    return this.id;
+export class Comment implements Comment {
+  constructor(obj: Comment) {
+    this.author = obj.author;
+    this.content = obj.content;
+    this.createdAt = obj.createdAt;
   }
 }
