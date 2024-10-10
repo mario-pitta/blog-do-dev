@@ -7,7 +7,7 @@
     "start:all": "npm-run-all --parallel start:client start:server",
     "start:client": "ng serve",
     "start:server": "npm --prefix src/assets/server run start",
-    "install:all": "npm-run-all --parallel install:client install:server",
+    "install:all": "npm run install:server & npm run install:client",
     "install:client": "npm i -f",
     "install:server": "npm --prefix src/assets/server i -f",
     "build": "ng build",

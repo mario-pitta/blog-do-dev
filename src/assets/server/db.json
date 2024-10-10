@@ -327,7 +327,9 @@
         "github": "corrupti",
         "password": "Pa$$w0rd!"
       },
-      "createdAt": "2024-10-03T03:53:03.993Z"
+      "createdAt": "2024-10-03T03:53:03.993Z",
+      "comments": [],
+      "likes": 1
     },
     {
       "id": "39a4f420-813b-11ef-816b-33e5cbf1677b",
@@ -357,7 +359,9 @@
         "github": "Et exercitation inci",
         "password": "Pa$$w0rd!"
       },
-      "createdAt": "2024-10-03T03:59:13.084Z"
+      "createdAt": "2024-10-03T03:59:13.084Z",
+      "comments": [],
+      "likes": 2
     }
   ],
   "authors": [
